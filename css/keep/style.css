@@ -1,0 +1,151 @@
+/* NEW NOTE */
+
+.new-note {
+  margin: 0 auto;
+  max-width: 600px;
+  color: #c9c7cf;
+  padding: 20px;
+  background: rgba(250,250,250,0.5);
+  border-radius: 20px;
+  box-shadow: 0 0 5px 0 rgba(0,0,0,0.2);
+  display: flex;
+  justify-content: space-between;
+}
+
+.new-note input[type="text"]{
+  flex-grow: 1;
+  border: 0;
+  background-color: transparent;
+}
+
+.new-note-btn{
+  border-radius: 50%;
+  border: 0;
+  background-color: rgba(250,250,250,0.9);
+  padding: 10px;
+  width: 35px;
+  margin: 0 3px;
+  transition: all .2s ease-in-out;
+}
+
+.new-note-btn:hover{
+  background-color: rgba(0,0,0,0.2);
+}
+
+/* NOTE PREVIEW */
+
+.note-preview{
+  padding: 10px;
+  box-shadow: 0 0 5px 0 rgba(0,0,0,0.2);
+  background-color: #fff;
+  width: 300px;
+  border-radius: 10px;
+  margin: 0 10px 20px 10px;
+  position: relative;
+  min-height: 120px;
+}
+
+.note-todo-list {
+  margin: 0;
+  padding: 0 21px;
+}
+
+.note-preview img{
+  width: 100%;
+  height: 250px;
+  object-fit: contain;
+}
+
+.note-preview-pin{
+  position: absolute;
+  right: 0;
+}
+
+.todo-done{
+  text-decoration: line-through;
+}
+
+.controls button, .controls label {
+  background-color: transparent;
+  border: 0;
+  background: rgba(250,250,250,0.5);
+  border-radius: 50%;
+  width: 33px;
+  height: 33px;
+  transition: all .2s ease-in-out;
+  margin-right: 10px;
+}
+
+.controls button:hover, .controls label:hover {
+  background-color: rgba(0,0,0,0.2);
+}
+
+.controls{
+  display: flex;
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  right: 10px;
+}
+
+.controls-color-label{
+  position: relative;
+  cursor: pointer;
+}
+
+.fas.fa-palette{
+  position: absolute;
+  top: 8px;
+  left: 8px;
+}
+
+.controls input[type="color"] {
+  position: relative;
+  visibility: hidden;
+}
+
+/* NOTE GENERAL */
+
+.notes-title{
+  text-align: center;
+  font-size: 16px;
+  font-weight: 100;
+  margin-bottom: 5px;
+}
+
+.notes-list, .pinned-notes-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.note-filter{
+  border-radius: 20px;
+  border: 0;
+  background-color: rgba(250,250,250,0.9);
+  max-width: 250px;
+  box-shadow: 0 0 5px 0 rgba(0,0,0,0.2);
+  margin: 20px auto;
+}
+
+.note-filter input, .note-filter select{
+  border-radius: 20px;
+  border: 0;
+  background-color: transparent;
+  outline: 0;
+  color: #c9c7cf;
+}
+
+.note-filter input:focus{
+  width: 300px;
+}
+
+.note-filter input{
+  border-right: 1px solid #c9c7cf ;
+}
+
+@media (max-width: 500px){
+  .new-note {
+    flex-direction: column;
+  }
+}
