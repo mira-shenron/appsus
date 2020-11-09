@@ -9,7 +9,7 @@ export default{
     props: ['note'],
     name: 'note-preview',
     template: `<transition name="bounce"><div class="note-preview" @mouseover="controls=true" @mouseleave="controls=false" :style="{ 'background-color': bgColor }"> 
-                   <component :is="note.type" :note="note" />
+                   <component :is="note.type" :note="note"/>
                    <transition name="fade">
                    <div v-show="controls" class="controls">
                         <button @click="emitRemove(note.id)" class="fas fa-trash-alt"></button>

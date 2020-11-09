@@ -7,7 +7,7 @@ export default {
         <transition name="fade">
             <section v-show="msg" class="user-msg">
                 <p>{{msg}}</p>
-                <button @click="closeMessege">x</button>
+                <button class="user-msg-btn" @click="closeMessege"><i class="fas fa-times-circle"></i></button>
             </section>
         </transition>
     `,
@@ -26,7 +26,6 @@ export default {
         eventBus.$on(USR_MSG, msg => {
             this.msg = msg
             timer = setTimeout(() => {
-                console.log('closing');
                 this.msg = null;
             }, 3000);
         });

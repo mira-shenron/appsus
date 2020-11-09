@@ -2,13 +2,15 @@ export default {
     template: `
     <div class="new-note">
         <input type="text" v-model="input" :placeholder="placeholder" />
+        <div class="new-note-btns">
             <button @click="setType('noteTxt')" class="new-note-btn fas fa-font" title="Add text"></button> 
             <button @click="setType('noteImg')" class="new-note-btn fas fa-image" title="Add text"></button> 
             <button @click="setType('noteTodo')" class="new-note-btn fas fa-list"></button>
             <button @click="setType('noteVideo')" class="new-note-btn fab fa-youtube"></button>
             <button @click="setType('noteAudio')" class="new-note-btn fas fa-volume-up"></button>
             <button @click="emitAddNote" class="new-note-btn fas fa-plus"></button>
-        </div>
+        </div>  
+    </div>
     `,
     data() {
         return {

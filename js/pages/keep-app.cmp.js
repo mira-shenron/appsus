@@ -1,4 +1,4 @@
-import { noteService } from "../../apps/miss-keep/services/keep-service.js";
+import { noteService } from '../../apps/miss-keep/services/keep-service.js';
 import noteList from '../../apps/miss-keep/cmps/note-list.cmp.js';
 import addNote from '../../apps/miss-keep/cmps/add-note.cmp.js';
 import noteFilter from '../../apps/miss-keep/cmps/note-filter.cmp.js';
@@ -13,50 +13,54 @@ export default {
     </section>`,
     data() {
         return {
-            filterBy: {byTxt: '', byType: ''},
+            filterBy: { byTxt: '', byType: '' },
             notes: noteService.getNotes(),
-            newNote: noteService.getEmptyNote(),    
-        }
+            newNote: noteService.getEmptyNote(),
+            lastRoute: null,
+        };
     },
-    computed:{
-        notesToShow(){
-            if(this.filterBy.byType === '') {
-                if(this.filterBy.byTxt === '') return this.notes;
-                const txt= this.filterBy.byTxt.toLowerCase();
-                return this.notes.filter(note => 
-                    note.type === 'noteTxt' && 
-                    note.info.txt.toLowerCase().includes(txt))
-            };
-            return this.notes.filter(note => note.type === this.filterBy.byType)
-        } 
-    },
-    methods:{
-        addNote(newNote){
-            noteService.addNewNote(newNote)
+    computed: {
+        notesToShow() {
+            if (this.filterBy.byType === '') {
+                if (this.filterBy.byTxt === '') return this.notes;
+                const txt = this.filterBy.byTxt.toLowerCase();
+                return this.notes.filter(
+                    (note) =>
+                        note.type === 'noteTxt' &&
+                        note.info.txt.toLowerCase().includes(txt)
+                );
+            }
+            return this.notes.filter(
+                (note) => note.type === this.filterBy.byType
+            );
         },
-        setFilter(filterBy){
-            this.filterBy = filterBy;
-        }
     },
-    created(){  
-
+    methods: {
+        addNote(newNote) {
+            noteService.addNewNote(newNote);
+        },
+        setFilter(filterBy) {
+            this.filterBy = filterBy;
+        },
+    },
+    created() {
         eventBus.$on(EVENT_REMOVE_NOTE, (noteId) => {
             eventBus.$emit(USR_MSG, 'Note has been removed successfully!');
-            noteService.remove(noteId)
-        })
+            noteService.remove(noteId);
+        });
         eventBus.$on(EVENT_SET_NOTE_COLOR, (noteId, color) => {
-            noteService.setColor(noteId, color) 
-        })
+            noteService.setColor(noteId, color);
+        });
         eventBus.$on(EVENT_SET_PINNED, (noteId, isPinned) => {
-            noteService.setPinned(noteId, isPinned) 
-        }) 
+            noteService.setPinned(noteId, isPinned);
+        });
         eventBus.$on(UPDATE_NOTE_TODOS, (noteId, todoId) => {
-            noteService.updateNoteTodos(noteId, todoId) 
-        })         
+            noteService.updateNoteTodos(noteId, todoId);
+        });
     },
-    components:{
+    components: {
         noteList,
         addNote,
-        noteFilter
-    }
-}
+        noteFilter,
+    },
+};
